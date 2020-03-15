@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-using namespace std;		//µ¥µãÐÞ¸Ä£¬Çø¼ä²éÑ¯ 
+using namespace std;		//å•ç‚¹ä¿®æ”¹ï¼ŒåŒºé—´æŸ¥è¯¢ 
 int a[500001],tree[500001];
 int lowbit(int x)
 {
@@ -20,7 +20,7 @@ int main()
 	int n,m;
 	cin>>n>>m;
 	for(int i=1;i<=n;i++) scanf("%d",&a[i]);
-	//½¨Á¢Ê÷×´Êý×é
+	//å»ºç«‹æ ‘çŠ¶æ•°ç»„
 	for(int i=1;i<=n;i++)
 	{
 		int x=i;
@@ -34,7 +34,7 @@ int main()
 	{
 		int d,x,y;
 		scanf("%d %d %d",&d,&x,&y);
-		if(d==1)	//Ôö¼Ó 
+		if(d==1)	//å¢žåŠ  
 		{
 			int xx=x;
 			while(xx<=n)
@@ -43,7 +43,7 @@ int main()
 				xx+=lowbit(xx);
 			}
 		}
-		else	//²éÑ¯ 
+		else	//æŸ¥è¯¢ 
 		{
 			printf("%d\n",ask(y)-ask(x-1));
 		}
