@@ -1,29 +1,29 @@
-#include <bits/stdc++.h>	//Çø¼äĞŞ¸Ä¡¢Çø¼ä²éÑ¯--->Ïß¶ÎÊ÷ 
+#include <bits/stdc++.h>	//åŒºé—´ä¿®æ”¹ã€åŒºé—´æŸ¥è¯¢--->çº¿æ®µæ ‘ 
 #define int long long
 using namespace std;
 int a[100001],tree[4*100001],lazy[4*100001];
-void build(int l,int r,int num)	//num±íÏß¶ÎÊ÷½áµãºÅ 
+void build(int l,int r,int num)	//numè¡¨çº¿æ®µæ ‘ç»“ç‚¹å· 
 {
 	if(l==r)
 	{
-		tree[num]=a[l];	//Ò¶×Ó½áµã
+		tree[num]=a[l];	//å¶å­ç»“ç‚¹
 		return;
 	}
-	//²»¶Ï¶ş·Ö
+	//ä¸æ–­äºŒåˆ†
 	int m=(l+r)/2;
-	build(l,m,2*num);	//2*numÓë2*num+1·Ö±ğ±í×ó×Ó½ÚµãÓëÓÒ×Ó½Úµã 
+	build(l,m,2*num);	//2*numä¸2*num+1åˆ†åˆ«è¡¨å·¦å­èŠ‚ç‚¹ä¸å³å­èŠ‚ç‚¹ 
 	build(m+1,r,2*num+1);
-	//´ÓÒ¶½Úµã¿ªÊ¼»ØËİ
+	//ä»å¶èŠ‚ç‚¹å¼€å§‹å›æº¯
 	tree[num]=tree[2*num]+tree[2*num+1];
 }
-void update(int x,int y,int k,int l,int r,int num)		//¸Ãº¯ÊıÔËÓÃlazy-tagË¼Ïë 
+void update(int x,int y,int k,int l,int r,int num)		//è¯¥å‡½æ•°è¿ç”¨lazy-tagæ€æƒ³ 
 {
-	//Çø¼ä´íÎó£¬Ìø»Ø
+	//åŒºé—´é”™è¯¯ï¼Œè·³å›
 	if(r<x||l>y) return;
-	else	//Çó¼ÓºÍ 
+	else	//æ±‚åŠ å’Œ 
 	{
-		int len;		//¸²¸Ç³¤¶È 
-		if(l>=x&&r<=y)		//lazy-tagË¼Ïë--->Í£Ö¹¸üĞÂ 
+		int len;		//è¦†ç›–é•¿åº¦ 
+		if(l>=x&&r<=y)		//lazy-tagæ€æƒ³--->åœæ­¢æ›´æ–° 
 		{
 			lazy[num]+=k;
 			return;
@@ -36,17 +36,17 @@ void update(int x,int y,int k,int l,int r,int num)		//¸Ãº¯ÊıÔËÓÃlazy-tagË¼Ïë
 	int m=(l+r)/2;
 	update(x,y,k,l,m,2*num);update(x,y,k,m+1,r,2*num+1);
 }
-void ask(int x,int y,int l,int r,int num,int &ans)		//¸Ãº¯ÊıÒàÔËÓÃlazy-tagË¼Ïë 
+void ask(int x,int y,int l,int r,int num,int &ans)		//è¯¥å‡½æ•°äº¦è¿ç”¨lazy-tagæ€æƒ³ 
 {
-	if(lazy[num])		//lazy-tagË¼Ïë--->lazyÖµÏÂ·Å 
+	if(lazy[num])		//lazy-tagæ€æƒ³--->lazyå€¼ä¸‹æ”¾ 
 	{
 		if(l!=r)
 		{
 			lazy[2*num]+=lazy[num];
 			lazy[2*num+1]+=lazy[num];
 		}
-		tree[num]+=(r-l+1)*lazy[num];	//¸üĞÂ 
-		lazy[num]=0;	//ÇåÁã 
+		tree[num]+=(r-l+1)*lazy[num];	//æ›´æ–° 
+		lazy[num]=0;	//æ¸…é›¶ 
 	}
 	if(l>=x&&r<=y)
 	{
@@ -62,7 +62,7 @@ signed main()
 	int n,m;
 	cin>>n>>m;
 	for(int i=1;i<=n;i++) scanf("%lld",&a[i]);
-	//½¨Á¢Ïß¶ÎÊ÷ 
+	//å»ºç«‹çº¿æ®µæ ‘ 
 	build(1,n,1);
 	while(m--)
 	{
