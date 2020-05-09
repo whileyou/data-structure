@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;		//单点修改，区间查询 
 int a[500001],tree[500001];
-int lowbit(int x)
+int lowbit(int x)	//注：lowbit(x)即为tree[x]的覆盖长度
 {
 	return x&-x;
 }
